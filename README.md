@@ -2,6 +2,8 @@ Clean ES6 seed project
 ===================
 Looking for boilerplate projects to start working with ECMAScript 6 I didn't found a project that fit my requirements, so I take the best part of other projects and put all together here. This project can be used to bootstrap new projects with ECMAScript 6 support. 
 
+See an example of implementation with Backbone.Marionette [here](https://github.com/abiee/es6-marionette).
+
 What's inside
 ----------------
 Batteries included:
