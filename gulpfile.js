@@ -157,18 +157,18 @@ gulp.task('webpack:build', function(callback) {
   var conf = Object.create(webpackConfig);
 
   conf.plugins = conf.plugins.concat(
-		new webpack.optimize.DedupePlugin(),
-		new webpack.optimize.UglifyJsPlugin()
-	);
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin()
+  );
 
   // run webpack
-	webpack(conf, function(err, stats) {
-		if(err) throw new $.util.PluginError("webpack:build", err);
-		$.util.log("[webpack:build]", stats.toString({
-			colors: true
-		}));
-		callback();
-	});
+  webpack(conf, function(err, stats) {
+    if(err) throw new $.util.PluginError("webpack:build", err);
+    $.util.log("[webpack:build]", stats.toString({
+      colors: true
+    }));
+    callback();
+  });
 });
 
 // Run karma for development, will watch and reload
@@ -203,14 +203,13 @@ gulp.task('watch', ['connect'], function () {
   // watch for changes
   gulp.watch([
     'app/*.html',
-    '.tmp/styles/**/*.css',
-    '.tmp/scripts/**/*.js',
-    'app/images/**/*'
+    'app/images/**/*',
+    '.tmp/styles/**/*.css'
   ]).on('change', $.livereload.changed);
 
-  gulp.watch('app/scripts/**/*.js', ['webpack']);
-  gulp.watch('app/scripts/**/*.hbs', ['webpack']);
   gulp.watch('app/styles/**/*.less', ['styles']);
+  gulp.watch('app/scripts/**/*.js', ['webpack'])
+    .on('change', $.livereload.changed);
 });
 
 // Build the project for distribution
